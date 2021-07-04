@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<body>
-</body>
-    <b><title>StarBucks Reserve</title></b>
+{% include 'head.html' %}
 
+<body>
 
     {% include 'temp_head.html' %}
 
+    <hr>
+
     {% block content %}
+        block content가 없을 경우
+    {% endblock %}
 
-    {% endblock content %}
-
+    <hr>
 
     {% include 'temp_footer.html' %}
 
