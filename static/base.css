@@ -1,0 +1,18 @@
+
+.site_logo {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.site_header_logo{
+    text-align:center;
+    margin: 2rem 0;
+}
+
+.site_footer_total {
+    text-align:center;
+    margin-top: 2rem;
+}
+
+.site_footer_button{
+    font-size: .8rem;
+}
