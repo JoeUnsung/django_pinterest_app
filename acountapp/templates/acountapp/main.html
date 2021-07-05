@@ -1,0 +1,36 @@
+{% extends 'temp_base.html' %}
+
+{% block content %}
+<style>
+    .main-style {
+        border-radius: 1rem;
+        margin: 2rem;
+        text-align: center;
+    }
+
+</style>
+    <div class="main-style">
+        <h1 class="site_logo">
+            Main List View
+        </h1>
+        <form action="/account/main/" method="POST">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="id" placeholder="Type Name" style="margin: 1rem;"><br>
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="POST">
+            </div>
+        </form>
+
+        {% if res.output %}
+            {% for var in res.output %}
+                <h2>
+                    {{ var }}
+                </h2>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+{% endblock %}
+

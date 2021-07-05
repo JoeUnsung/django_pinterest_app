@@ -1,11 +1,11 @@
 from django.urls import path
 
-from acountapp.views import hello_django
+from acountapp.views import mainView
 
 
-app_name = 'acountapp'
+app_name = 'accountapp'
 
 urlpatterns = [
-    path('hello/', hello_django, name='hello_django'),
+    path('main/', mainView, name='main_view'),
 
 ]
