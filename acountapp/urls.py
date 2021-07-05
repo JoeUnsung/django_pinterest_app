@@ -6,6 +6,6 @@ from acountapp.views import mainView
 app_name = 'accountapp'
 
 urlpatterns = [
-    path('hello/', mainView, name='main_view'),
+    path('main/', mainView, name='main_view'),
 
 ]
