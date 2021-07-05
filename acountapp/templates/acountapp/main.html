@@ -1,0 +1,27 @@
+{% extends 'temp_base.html' %}
+
+{% block content %}
+<style>
+    .testing {
+        border-radius: 1rem;
+        margin: 2rem;
+        text-align: center;
+    }
+
+</style>
+    <div class="testing">
+        <form action="/account/main/" method="POST">
+            {% csrf_token %}
+            <input type="text" name="id" placeholder="Type Name"><br>
+            <input type="submit" class="btn btn-primary" value="POST">
+        </form>
+
+        <h2>
+            {{ text.name }}
+            <br>
+            {{ text.content }}
+        </h2>
+
+    </div>
+{% endblock %}
+

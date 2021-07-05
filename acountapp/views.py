@@ -4,7 +4,11 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def hello_django(request):
+def mainView(request):
+    if request.method == "GET":
+        return render(request, 'acountapp/main.html')
 
-    # return HttpResponse("Hello Django, I'm here to fuck you up")
-    return render(request, 'acountapp/hello_django.html')
+    if request.method == "POST":
+
+        request = request
+        return render(request, 'acountapp/main.html', context={'text': {'name': 'DJANGO', 'content': 'LETS BREAK DJANGO'}})
