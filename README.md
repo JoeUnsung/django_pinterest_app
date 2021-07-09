@@ -1,6 +1,7 @@
-# Pinterest
- - Pinterest 블로그 토이플젝
-
+# Pinterest 레이아웃 블로그
+ - Pinterest 레이아웃을 딴 블로그를 만들어보는 토이플젝
+ - django를 이해해보자
+ - 이를 통해 서비스에서 이루어지는 CRUD 데이터 프로세싱을 이해하자
 
 ## Spec.
  - Python 3.6
