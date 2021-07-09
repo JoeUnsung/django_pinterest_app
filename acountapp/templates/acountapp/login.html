@@ -1,18 +1,21 @@
 {% extends 'temp_base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 
 <div style="text-align: center;">
     <div>
         <h4>
-            안녕하세요. 환영해요.
+            다시 오셨군요?
         </h4>
     </div>
-    <div>
+    <div style="max-width: 600px;
+                margin: 4rem auto;">
         <form action="" method="POST">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" class="btn btn-primary">
+            {% bootstrap_form form %}
+
+            <input type="submit" class="btn btn-dark rounded-pill col-6" style="margin: 1rem auto;">
         </form>
     </div>
 </div>
