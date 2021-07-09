@@ -8,6 +8,7 @@
  - Django 3.2.5
    - [CreateView 공식문서](https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-editing/#django.views.generic.edit.CreateView)
      - [UserCreationForm](https://docs.djangoproject.com/en/3.2/topics/auth/default/#django.contrib.auth.forms.UserCreationForm)
+ - Bootstrap4 [django-bootstrap4](https://django-bootstrap4.readthedocs.io/en/latest/installation.html)
 
 ## Process
  - (진행중) Bootstrap 을 이용한 Form 디자인 정리
