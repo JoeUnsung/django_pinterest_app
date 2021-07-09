@@ -11,4 +11,5 @@
  - Bootstrap4 [django-bootstrap4](https://django-bootstrap4.readthedocs.io/en/latest/installation.html)
 
 ## Process
- - (진행중) Bootstrap 을 이용한 Form 디자인 정리
+ - (진행중) 개인 프로필 설정 페이지 
+ - (완료) Bootstrap 을 이용한 Form 디자인 정리
