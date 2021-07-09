@@ -3,22 +3,32 @@
 
 {% block content %}
 
-<div style="text-align: center;">
-    <div>
-        <h4>
-            환영해요
-        </h4>
-    </div>
+{% if not user.is_authenticated %}
+    <div style="text-align: center;">
+        <div>
+            <h4>
+                환영해요
+            </h4>
+        </div>
 
-    <div style="max-width: 600px;
-                margin: 1rem auto;">
-        <form action="{% url 'accountapp:create_user' %}" method="POST">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <input type="submit" class="btn btn-primary">
-        </form>
+        <div style="max-width: 600px;
+                    margin: 1rem auto;">
+            <form action="{% url 'accountapp:create_user' %}" method="POST">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
     </div>
-</div>
+{% else %}
+    <div style="text-align: center;">
+        <div>
+            <h4>
+                이미 로그인 중이에요.
+            </h4>
+        </div>
+    </div>
+{% endif %}
 
 
 {% endblock %}
