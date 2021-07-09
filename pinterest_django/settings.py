@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # DEFAULT
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # temp
+    # INSTALLED
+    'bootstrap4',
+
+    # APPs
     'acountapp',
 ]
 
@@ -130,5 +134,5 @@ STATICFILES_DIRS = [
     BASE_DIR + "/static",
 ]
 
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:main_view')
-LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
+# LOGIN_REDIRECT_URL = reverse_lazy('accountapp:main_view')
+# LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')

@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
@@ -29,16 +30,11 @@ def mainView(request):
         return HttpResponseRedirect(reverse('accountapp:main_view'))
         # return render(request, 'acountapp/main.html', context={'res': {'output':  result}})
 
-
-class accountCreateView(CreateView):
+class AccountCreateView(CreateView):
     model = User
-    fields = [
-        'username',
-        'password',
-        'email',
-        'first_name',
-        'last_name',
-    ]
-    form = UserCreationForm
+    form_class = UserCreationForm
     template_name = 'acountapp/create_user.html'
     success_url = reverse_lazy('accountapp:main_view')
+
+class AccountLoginView(LoginView):
+    template_name = 'acountapp/login.html'
