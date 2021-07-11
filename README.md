@@ -6,7 +6,7 @@
 ## Spec.
  - Python 3.6
  - Django 3.2.5
-   - Generic View 활용하기 
+   - Generic View 공식문서
      - [CreateView Docs](https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-editing/#django.views.generic.edit.CreateView)
        - [UserCreationForm](https://docs.djangoproject.com/en/3.2/topics/auth/default/#django.contrib.auth.forms.UserCreationForm)
      - [DetailView Docs](https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/#detailview)
