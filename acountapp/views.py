@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 
 from acountapp.forms import AccountUpdateForm
 from acountapp.models import Content
-# Create your views here.
 
 
 def mainView(request):
@@ -48,11 +47,12 @@ class AccountProfileView(DetailView): # Read 뷰
 class AccountUpdateView(UpdateView): #Update 뷰
     model = User
     form_class = AccountUpdateForm
+    context_object_name = 'login_user'
     template_name = 'acountapp/update_user.html'
     success_url = reverse_lazy('accountapp:main_view')
 
 class AccountDeleteView(DeleteView): #Update 뷰
     model = User
+    context_object_name = 'login_user'
     success_url = reverse_lazy('accountapp:main_view')
     template_name = 'acountapp/delete_user.html'
-

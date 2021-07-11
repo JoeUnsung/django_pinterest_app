@@ -12,7 +12,7 @@
 
     <div style="max-width: 600px;
                 margin: 1rem auto;">
-        <form action="{% url 'accountapp:delete_user' pk=user.pk %}" method="POST">
+        <form action="{% url 'accountapp:delete_user' pk=login_user.pk %}" method="POST">
             {% csrf_token %}
             <input type="submit" class="btn btn-danger">
         </form>
