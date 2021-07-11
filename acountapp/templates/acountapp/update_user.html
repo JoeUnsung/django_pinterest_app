@@ -1,0 +1,21 @@
+{% extends 'temp_base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div style="text-align: center;">
+    <div>
+        <h4>
+            어떤 것을 바꿀까요?
+        </h4>
+    </div>
+
+    <div style="max-width: 600px;
+                margin: 1rem auto;">
+        <form action="{% url 'accountapp:update_user' pk=user.pk %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}
