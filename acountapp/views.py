@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.models import User
 
 from acountapp.models import Content
@@ -38,3 +38,8 @@ class AccountCreateView(CreateView):
 
 class AccountLoginView(LoginView):
     template_name = 'acountapp/login.html'
+
+class AccountProfileView(DetailView):
+    model = User
+    template_name = 'acountapp/profile.html'
+
