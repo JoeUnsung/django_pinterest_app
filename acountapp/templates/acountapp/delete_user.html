@@ -1,0 +1,21 @@
+{% extends 'temp_base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div style="text-align: center;">
+    <div>
+        <h6>
+            모든 일은 한번 엎어지면 되돌릴 수가 없습니다.
+        </h6>
+        탈퇴하시겠습니까?
+    </div>
+
+    <div style="max-width: 600px;
+                margin: 1rem auto;">
+        <form action="{% url 'accountapp:delete_user' pk=user.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger">
+        </form>
+    </div>
+</div>
+{% endblock %}

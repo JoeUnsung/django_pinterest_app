@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 
 from acountapp.forms import AccountUpdateForm
@@ -50,4 +50,9 @@ class AccountUpdateView(UpdateView): #Update 뷰
     form_class = AccountUpdateForm
     template_name = 'acountapp/update_user.html'
     success_url = reverse_lazy('accountapp:main_view')
+
+class AccountDeleteView(DeleteView): #Update 뷰
+    model = User
+    success_url = reverse_lazy('accountapp:main_view')
+    template_name = 'acountapp/delete_user.html'
 
