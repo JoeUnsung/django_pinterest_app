@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.urls import reverse, reverse_lazy
 
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
@@ -50,6 +50,18 @@ class AccountProfileView(DetailView): # Read 뷰
     context_object_name = 'login_user'
     template_name = 'acountapp/profile.html'
 
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated and self.get_object() == self.request.user:
+            return super().get(*args, **kwargs)
+        else:
+            return HttpResponseForbidden()
+
+    def post(self, *args, **kwargs):
+        if self.request.user.is_authenticated and self.get_object() == self.request.user:
+            return super().get(*args, **kwargs)
+        else:
+            return HttpResponseForbidden()
+
 class AccountUpdateView(UpdateView): #Update 뷰
     model = User
     form_class = AccountUpdateForm
@@ -58,16 +70,16 @@ class AccountUpdateView(UpdateView): #Update 뷰
     template_name = 'acountapp/update_user.html'
 
     def get(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
+        if self.request.user.is_authenticated and self.get_object() == self.request.user:
             return super().get(*args, **kwargs)
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden()
 
     def post(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
+        if self.request.user.is_authenticated and self.get_object() == self.request.user:
             return super().get(*args, **kwargs)
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden()
 
 class AccountDeleteView(DeleteView): #Update 뷰
     model = User
@@ -76,13 +88,13 @@ class AccountDeleteView(DeleteView): #Update 뷰
     template_name = 'acountapp/delete_user.html'
 
     def get(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
+        if self.request.user.is_authenticated and self.get_object() == self.request.user:
             return super().get(*args, **kwargs)
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden()
 
     def post(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
+        if self.request.user.is_authenticated and self.get_object() == self.request.user:
             return super().get(*args, **kwargs)
         else:
-            return HttpResponseRedirect(reverse('accountapp:login'))
+            return HttpResponseForbidden()
