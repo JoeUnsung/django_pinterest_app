@@ -12,23 +12,28 @@ from acountapp.models import Content
 
 
 def mainView(request):
-    if request.method == "GET":
-        result = Content.objects.all()
-        result2 = User.objects.all()
-        # return render(request, 'acountapp/main.html', context={'res': {'output': result}})
-        return render(request, 'acountapp/main.html', context={'res': {'output': result2}})
 
-    if request.method == "POST":
-        id = request.POST.get('id')
+    if request.user.is_authenticated:
+        if request.method == "GET":
+            result = Content.objects.all()
+            result2 = User.objects.all()
+            # return render(request, 'acountapp/main.html', context={'res': {'output': result}})
+            return render(request, 'acountapp/main.html', context={'res': {'output': result2}})
 
-        cont = Content()
-        cont.id = id
-        cont.text = 'test body'
-        cont.save()
+        if request.method == "POST":
+            id = request.POST.get('id')
 
-        result = Content.objects.all()
-        return HttpResponseRedirect(reverse('accountapp:main_view'))
-        # return render(request, 'acountapp/main.html', context={'res': {'output':  result}})
+            cont = Content()
+            cont.id = id
+            cont.text = 'test body'
+            cont.save()
+
+            result = Content.objects.all()
+            return HttpResponseRedirect(reverse('accountapp:main_view'))
+            # return render(request, 'acountapp/main.html', context={'res': {'output':  result}})
+    else:
+        return HttpResponseRedirect(reverse('accountapp:login'))
+
 
 class AccountCreateView(CreateView): # Create 뷰
     model = User
@@ -38,6 +43,7 @@ class AccountCreateView(CreateView): # Create 뷰
 
 class AccountLoginView(LoginView):
     template_name = 'acountapp/login.html'
+    success_url = reverse_lazy('accountapp:main_view')
 
 class AccountProfileView(DetailView): # Read 뷰
     model = User
@@ -48,11 +54,35 @@ class AccountUpdateView(UpdateView): #Update 뷰
     model = User
     form_class = AccountUpdateForm
     context_object_name = 'login_user'
-    template_name = 'acountapp/update_user.html'
     success_url = reverse_lazy('accountapp:main_view')
+    template_name = 'acountapp/update_user.html'
+
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return super().get(*args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return super().get(*args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
 
 class AccountDeleteView(DeleteView): #Update 뷰
     model = User
     context_object_name = 'login_user'
     success_url = reverse_lazy('accountapp:main_view')
     template_name = 'acountapp/delete_user.html'
+
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return super().get(*args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return super().get(*args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
