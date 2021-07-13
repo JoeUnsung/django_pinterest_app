@@ -12,6 +12,12 @@ from django.contrib.auth.models import User
 from acountapp.forms import AccountUpdateForm
 from acountapp.models import Content
 
+
+is_ownership = [
+    login_required,
+]
+
+
 @login_required
 def mainView(request):
     if request.method == "GET":
@@ -43,8 +49,8 @@ class AccountLoginView(LoginView):
     template_name = 'acountapp/login.html'
     success_url = reverse_lazy('accountapp:main_view')
 
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
+@method_decorator(is_ownership, 'get')
+@method_decorator(is_ownership, 'post')
 class AccountProfileView(DetailView): # Read 뷰
     model = User
     context_object_name = 'login_user'
