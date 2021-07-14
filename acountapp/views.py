@@ -96,7 +96,6 @@ class AccountUpdateView(UpdateView): #Update 뷰
 class AccountDeleteView(DeleteView): #Update 뷰
     model = User
     context_object_name = 'login_user'
-    success_url = reverse_lazy('accountapp:main_view')
     template_name = 'acountapp/delete_user.html'
 
     # def get(self, *args, **kwargs):
