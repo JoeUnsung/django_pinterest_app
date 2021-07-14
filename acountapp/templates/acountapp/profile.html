@@ -8,11 +8,22 @@
             {{ login_user.date_joined }}
         </p>
     </div>
+
+    {% if login_user.profile %}
     <div>
         <p>
-            {{ login_user.username }}
+            {{ login_user.profile.nickname }}
         </p>
     </div>
+    {% else %}
+    <div>
+        <a href="{% url 'profile_app:make_profile' %}">
+            <h3>
+                프로필 만들기!
+            </h3>
+        </a>
+    </div>
+    {% endif %}
 
     {% if user == user %}
     <a href="{% url 'accountapp:update_user' pk=user.pk %}">
