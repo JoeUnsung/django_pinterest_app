@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # APPs
     'acountapp',
+    'profile_app',
 ]
 
 MIDDLEWARE = [
